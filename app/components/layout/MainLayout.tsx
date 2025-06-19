@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Hero from "../sections/Hero";
-import CardContainer from "../sections/CardContainer";
+import CardContainer from "../sections/FeaturedMeals";
 
 export default function MainLayout() {
   return (

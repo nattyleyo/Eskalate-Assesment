@@ -74,17 +74,25 @@
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
+    --color-red-100: oklch(93.6% 0.032 17.717);
+    --color-red-500: oklch(63.7% 0.237 25.331);
+    --color-red-800: oklch(44.4% 0.177 26.899);
     --color-orange-100: oklch(95.4% 0.038 75.164);
     --color-orange-400: oklch(75% 0.183 55.934);
     --color-orange-500: oklch(70.5% 0.213 47.604);
     --color-orange-600: oklch(64.6% 0.222 41.116);
     --color-yellow-400: oklch(85.2% 0.199 91.936);
     --color-yellow-500: oklch(79.5% 0.184 86.047);
+    --color-green-100: oklch(96.2% 0.044 156.743);
+    --color-green-500: oklch(72.3% 0.219 149.579);
+    --color-green-800: oklch(44.8% 0.119 151.328);
+    --color-blue-600: oklch(54.6% 0.245 262.881);
     --color-gray-50: oklch(98.5% 0.002 247.839);
     --color-gray-100: oklch(96.7% 0.003 264.542);
     --color-gray-300: oklch(87.2% 0.01 258.338);
     --color-gray-400: oklch(70.7% 0.022 261.325);
     --color-gray-500: oklch(55.1% 0.027 264.364);
+    --color-gray-600: oklch(44.6% 0.03 256.802);
     --color-gray-700: oklch(37.3% 0.034 259.733);
     --color-gray-800: oklch(27.8% 0.033 256.848);
     --color-gray-900: oklch(21% 0.034 264.665);
@@ -95,12 +103,18 @@
     --container-sm: 24rem;
     --container-xl: 36rem;
     --container-7xl: 80rem;
+    --text-xs: 0.75rem;
+    --text-xs--line-height: calc(1 / 0.75);
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
     --text-base: 1rem;
     --text-base--line-height: calc(1.5 / 1);
+    --text-lg: 1.125rem;
+    --text-lg--line-height: calc(1.75 / 1.125);
     --text-xl: 1.25rem;
     --text-xl--line-height: calc(1.75 / 1.25);
+    --text-2xl: 1.5rem;
+    --text-2xl--line-height: calc(2 / 1.5);
     --text-4xl: 2.25rem;
     --text-4xl--line-height: calc(2.5 / 2.25);
     --text-5xl: 3rem;
@@ -111,6 +125,7 @@
     --font-weight-extrabold: 800;
     --radius-md: 0.375rem;
     --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-geist-sans);
@@ -272,6 +287,12 @@
   .top-1\/2 {
     top: calc(1/2 * 100%);
   }
+  .top-2 {
+    top: calc(var(--spacing) * 2);
+  }
+  .left-2 {
+    left: calc(var(--spacing) * 2);
+  }
   .left-3 {
     left: calc(var(--spacing) * 3);
   }
@@ -280,6 +301,24 @@
   }
   .row-start-3 {
     grid-row-start: 3;
+  }
+  .container {
+    width: 100%;
+    @media (width >= 40rem) {
+      max-width: 40rem;
+    }
+    @media (width >= 48rem) {
+      max-width: 48rem;
+    }
+    @media (width >= 64rem) {
+      max-width: 64rem;
+    }
+    @media (width >= 80rem) {
+      max-width: 80rem;
+    }
+    @media (width >= 96rem) {
+      max-width: 96rem;
+    }
   }
   .m-0 {
     margin: calc(var(--spacing) * 0);
@@ -290,8 +329,14 @@
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
   }
+  .mt-6 {
+    margin-top: calc(var(--spacing) * 6);
+  }
   .mt-10 {
     margin-top: calc(var(--spacing) * 10);
+  }
+  .mr-2 {
+    margin-right: calc(var(--spacing) * 2);
   }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
@@ -311,8 +356,14 @@
   .grid {
     display: grid;
   }
+  .inline-block {
+    display: inline-block;
+  }
   .h-10 {
     height: calc(var(--spacing) * 10);
+  }
+  .h-48 {
+    height: calc(var(--spacing) * 48);
   }
   .h-\[600px\] {
     height: 600px;
@@ -390,6 +441,9 @@
   .gap-4 {
     gap: calc(var(--spacing) * 4);
   }
+  .gap-6 {
+    gap: calc(var(--spacing) * 6);
+  }
   .gap-10 {
     gap: calc(var(--spacing) * 10);
   }
@@ -430,6 +484,9 @@
       margin-inline-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-x-reverse)));
     }
   }
+  .overflow-hidden {
+    overflow: hidden;
+  }
   .rounded {
     border-radius: 0.25rem;
   }
@@ -441,6 +498,9 @@
   }
   .rounded-md {
     border-radius: var(--radius-md);
+  }
+  .rounded-xl {
+    border-radius: var(--radius-xl);
   }
   .rounded-l-md {
     border-top-left-radius: var(--radius-md);
@@ -495,6 +555,9 @@
   .bg-gray-800 {
     background-color: var(--color-gray-800);
   }
+  .bg-green-100 {
+    background-color: var(--color-green-100);
+  }
   .bg-orange-100 {
     background-color: var(--color-orange-100);
   }
@@ -504,14 +567,23 @@
   .bg-orange-500 {
     background-color: var(--color-orange-500);
   }
+  .bg-red-100 {
+    background-color: var(--color-red-100);
+  }
   .bg-white {
     background-color: var(--color-white);
+  }
+  .bg-yellow-400 {
+    background-color: var(--color-yellow-400);
   }
   .bg-yellow-500 {
     background-color: var(--color-yellow-500);
   }
   .object-contain {
     object-fit: contain;
+  }
+  .object-cover {
+    object-fit: cover;
   }
   .p-4 {
     padding: calc(var(--spacing) * 4);
@@ -525,6 +597,9 @@
   .px-1 {
     padding-inline: calc(var(--spacing) * 1);
   }
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
+  }
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
   }
@@ -537,11 +612,17 @@
   .py-0\.5 {
     padding-block: calc(var(--spacing) * 0.5);
   }
+  .py-1 {
+    padding-block: calc(var(--spacing) * 1);
+  }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
+  }
+  .py-8 {
+    padding-block: calc(var(--spacing) * 8);
   }
   .py-12 {
     padding-block: calc(var(--spacing) * 12);
@@ -573,9 +654,17 @@
   .font-\[family-name\:var\(--font-geist-sans\)\] {
     font-family: var(--font-geist-sans);
   }
+  .text-2xl {
+    font-size: var(--text-2xl);
+    line-height: var(--tw-leading, var(--text-2xl--line-height));
+  }
   .text-4xl {
     font-size: var(--text-4xl);
     line-height: var(--tw-leading, var(--text-4xl--line-height));
+  }
+  .text-lg {
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
   }
   .text-sm {
     font-size: var(--text-sm);
@@ -588,6 +677,10 @@
   .text-xl {
     font-size: var(--text-xl);
     line-height: var(--tw-leading, var(--text-xl--line-height));
+  }
+  .text-xs {
+    font-size: var(--text-xs);
+    line-height: var(--tw-leading, var(--text-xs--line-height));
   }
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
@@ -612,6 +705,9 @@
   .text-background {
     color: var(--background);
   }
+  .text-blue-600 {
+    color: var(--color-blue-600);
+  }
   .text-gray-300 {
     color: var(--color-gray-300);
   }
@@ -621,11 +717,26 @@
   .text-gray-500 {
     color: var(--color-gray-500);
   }
+  .text-gray-600 {
+    color: var(--color-gray-600);
+  }
   .text-gray-900 {
     color: var(--color-gray-900);
   }
+  .text-green-500 {
+    color: var(--color-green-500);
+  }
+  .text-green-800 {
+    color: var(--color-green-800);
+  }
   .text-orange-500 {
     color: var(--color-orange-500);
+  }
+  .text-red-500 {
+    color: var(--color-red-500);
+  }
+  .text-red-800 {
+    color: var(--color-red-800);
   }
   .text-white {
     color: var(--color-white);
@@ -638,6 +749,9 @@
   }
   .text-yellow-400 {
     color: var(--color-yellow-400);
+  }
+  .text-yellow-500 {
+    color: var(--color-yellow-500);
   }
   .antialiased {
     -webkit-font-smoothing: antialiased;
@@ -668,6 +782,16 @@
   .placeholder\:text-gray-400 {
     &::placeholder {
       color: var(--color-gray-400);
+    }
+  }
+  .hover\:scale-105 {
+    &:hover {
+      @media (hover: hover) {
+        --tw-scale-x: 105%;
+        --tw-scale-y: 105%;
+        --tw-scale-z: 105%;
+        scale: var(--tw-scale-x) var(--tw-scale-y);
+      }
     }
   }
   .hover\:border-transparent {
@@ -709,6 +833,13 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-yellow-400);
+      }
+    }
+  }
+  .hover\:bg-yellow-500 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-yellow-500);
       }
     }
   }
@@ -845,6 +976,11 @@
     @media (width >= 48rem) {
       font-size: var(--text-base);
       line-height: var(--tw-leading, var(--text-base--line-height));
+    }
+  }
+  .lg\:grid-cols-4 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
   .lg\:px-8 {
@@ -1035,6 +1171,21 @@ body {
   syntax: "*";
   inherits: false;
 }
+@property --tw-scale-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
 @property --tw-blur {
   syntax: "*";
   inherits: false;
@@ -1119,6 +1270,9 @@ body {
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
       --tw-duration: initial;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-scale-z: 1;
       --tw-blur: initial;
       --tw-brightness: initial;
       --tw-contrast: initial;
