@@ -3,7 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Header() {
+interface HeaderProps {
+  onAddMealClick: () => void;
+}
+
+export default function Header({ onAddMealClick }: HeaderProps) {
   return (
     <header className="w-full bg-white shadow-sm py-4 px-6 flex items-center justify-between">
       {/* Left: Logo */}
@@ -21,12 +25,12 @@ export default function Header() {
       </div>
 
       {/* Right: Add Meal Button */}
-      <Link
-        href="/add-meal"
+      <button
+        onClick={onAddMealClick}
         className="bg-orange-400 hover:bg-orange-500 text-white px-5 py-2 rounded-md text-sm shadow-md transition duration-300"
       >
         Add Meal
-      </Link>
+      </button>
     </header>
   );
 }
